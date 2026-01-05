@@ -1,0 +1,28 @@
+.slider-slide {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #FCAF2E;
+}
+.slider-arrow {
+  display: none;
+}
+.swiper-button-next, .swiper-button-prev {
+  display: none !important;
+}
+footer a {
+  text-decoration: none;
+  color: #d1d5db; /* gray-300 */
+}
+
+footer a:hover {
+  color: #D2B563;
+}

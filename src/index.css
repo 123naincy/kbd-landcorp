@@ -89,3 +89,9 @@
 .animation-delay-400 {
   animation-delay: 400ms;
 }
+:root {
+  --navbar-height: 96px; /* navbar actual height ke approx */
+}
+a{
+  text-decoration: none;
+}

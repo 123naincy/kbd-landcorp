@@ -19,7 +19,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20">
+    <section id="about" >
       <div className="container mx-auto px-4">
         {/* Header */}
         <Reveal className="text-center mb-16">

@@ -4,30 +4,41 @@ import Home from "./pages/Home";
 import AboutPage from "./pages/About";
 import ContactPage from "./pages/Contact";
 import Eden from "./pages/EdenStreet";
-import Navbar from "./components/Navbar";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import Gallery from "./pages/Gallery";
+import BridalShoppingCommercial from "./pages/BridalShoppingCommercial";
+import "./index.css";
+import MainLayout from "./layouts/MainLayout";
 
 export default function App() {
   const location = useLocation();
 
-  // Hide Navbar on Eden page
-  const hideNavbar = location.pathname === "/eden-street";
-
   return (
-    <>
-      {!hideNavbar && <Navbar />}
-
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        {/* Pages WITH Navbar */}
+        <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/eden-street" element={<Eden />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route
-            path="*"
-            element={<div style={{ padding: 24 }}>Not Found</div>}
+            path="/bridal-shopping-commercial"
+            element={<BridalShoppingCommercial />}
           />
-        </Routes>
-      </AnimatePresence>
-    </>
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/Terms-and-condition" element={<TermsAndConditions />} />
+        </Route>
+
+        {/* Page WITHOUT Navbar */}
+        <Route path="/eden-street" element={<Eden />} />
+
+        <Route
+          path="*"
+          element={<div style={{ padding: 24 }}>Not Found</div>}
+        />
+      </Routes>
+    </AnimatePresence>
   );
 }

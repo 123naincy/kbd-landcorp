@@ -2,7 +2,7 @@
 import eden from "../assets/Eden.jpg";
 import eden_two from "../assets/eden-properties.jpeg";
 import panipat from "../assets/Panipat.jpeg";
-import swarnav from "../assets/Swarnav.jpg";
+import swarnav from "../assets/bridal-about.png";
 import sindhudurg from "../assets/Sindhudurg.jpg";
 // General / website assets
 import kbdwebsite from "../assets/right-banner.jpeg";

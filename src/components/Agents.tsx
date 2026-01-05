@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Reveal from './animations/Reveal';
-
+import "../components/BridalCommercial/Hero.css";
 export default function Agents() {
   return (
     <section id="agents" className="py-20 bg-gray-50">

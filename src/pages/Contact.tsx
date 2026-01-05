@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 
+
 const Contact = lazy(() => import("../components/Contact"));
 
 export default function ContactPage() {

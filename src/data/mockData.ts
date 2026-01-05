@@ -1,35 +1,33 @@
 // src/data/mockData.ts
-import { eden, panipat, swarnav, sindhudurg,deepakSir,vikramRaidu,amitKumar,amitLohiya,kashishKholiwal,heenaWaliya,tanya } from "./images";
+import { eden, panipat, swarnav, sindhudurg, deepakSir, vikramRaidu, amitKumar, amitLohiya, kashishKholiwal, heenaWaliya, tanya } from "./images";
 
-export type Property = {
+export interface Property {
   id: string;
   title: string;
-  description?: string;
-  price?: number | string;
-  price_unit?: string; // e.g., "per sq. ft", "per sq. yard"
-  location?: string;
-  bedrooms?: number | string;
-  sizes?: string; // NEW: preferred field for size options like "16'X66', 16'X70'"
-  bathrooms?: number;
-  area_sqft?: number | string;
-  property_type?: "residential" | "commercial" | "land" | string;
-  status?: string;
-  image_url?: string;
-  featured?: boolean;
-  created_at?: string;
-};
+  slug: string;
+  description: string;
+  price_unit: string;
+  location: string;
+  sizes: string;
+  area_sqft: number;
+  property_type: "commercial" | "residential";
+  status: "available" | "sold";
+  image_url: string;
+  featured: boolean;
+  created_at: string;
+}
+
 
 export const mockProperties: Property[] = [
   {
     id: "1",
     title: "Eden Street",
+    slug: "/eden-street",
     description:
       "Eden Street is envisioned as a modern shopping and business destination, designed to cater to the needs of today’s entrepreneurs and investors.",
-    price: "1.25 Cr",
     price_unit: "2 Acre",
     location: "Mohali, Punjab",
     sizes: "16'X66', 16'X70'",
-    bathrooms: 6,
     area_sqft: 2000,
     property_type: "commercial",
     status: "available",
@@ -40,13 +38,12 @@ export const mockProperties: Property[] = [
   {
     id: "2",
     title: "Residential Plots in Sindhudurg",
+    slug: "/sindhudurg-plots",
     description:
       "Premium residential plots surrounded by natural beauty and modern infrastructure. Ideal for peaceful living and investment.",
-    price: "60 Lakhs",
     price_unit: "8.5 Acre",
     location: "Sindhudurg, Maharashtra",
     sizes: "250, 300, 400",
-    bathrooms: 3,
     area_sqft: 3200,
     property_type: "residential",
     status: "available",
@@ -56,14 +53,13 @@ export const mockProperties: Property[] = [
   },
   {
     id: "3",
-    title: "Coming Soon Luxury Commercial Showrooms",
+    title: "Bridal Commercial Showrooms",
+    slug: "/bridal-shopping-commercial",
     description:
-      "A modern commercial project offering premium office and retail spaces for dynamic entrepreneurs and investors.",
-    price: "1.5 Cr",
+      "Bridal Square represents the perfect convergence of location, design, and opportunity. With 6 acres of thoughtfully planned commercial space, this development is set to become the region's premier bridal shopping destination.",
     price_unit: "6 Acre",
     location: "Mohali, Punjab",
-    sizes: "N/A",
-    bathrooms: 3,
+    sizes: "16'X60', 16'X66'",
     area_sqft: 4500,
     property_type: "commercial",
     status: "available",
@@ -74,13 +70,12 @@ export const mockProperties: Property[] = [
   {
     id: "4",
     title: "Residential Plots in Abohar",
+    slug: "/abohar-plots",
     description:
       "Elegant residential project in Abohar featuring modern amenities, spacious plots, and excellent connectivity.",
-    price: "15 Lakhs",
     price_unit: "5 Acre",
     location: "Abohar, Punjab",
     sizes: "150, 250, 300",
-    bathrooms: 3,
     area_sqft: 15000,
     property_type: "residential",
     status: "available",
@@ -88,6 +83,7 @@ export const mockProperties: Property[] = [
     featured: false,
     created_at: new Date().toISOString(),
   },
+
 ];
 
 export const mockAgents = [

@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 
+
 const About = lazy(() => import("../components/About"));
 
 export default function AboutPage() {
@@ -16,6 +17,7 @@ export default function AboutPage() {
     >
       <div style={{ paddingTop: '80px' }}>
         <Suspense fallback={<div style={{ padding: 24 }}>Loading…</div>}>
+         
           <About />
           <Footer />
         </Suspense>
