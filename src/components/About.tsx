@@ -20,7 +20,7 @@ export default function About() {
 
   return (
     <section id="about" >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 py-4">
         {/* Header */}
         <Reveal className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-[#293066] mb-4">
