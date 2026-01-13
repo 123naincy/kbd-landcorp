@@ -95,3 +95,26 @@
 a{
   text-decoration: none;
 }
+
+/* faq css */
+
+.accordion-button {
+  background: linear-gradient(90deg, #f8f9fa, #ffffff);
+  border-radius: 8px;
+}
+
+.accordion-button:not(.collapsed) {
+  background: linear-gradient(90deg, #fcaf2e, #fcaf2e);
+  color: #fff;
+}
+
+.accordion-button:not(.collapsed)::after {
+  filter: brightness(0) invert(1);
+}
+
+.card {
+  border-radius: 12px;
+}
+.accordion-button::after{
+  display: none;
+}

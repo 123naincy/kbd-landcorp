@@ -1,62 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Carousel from "react-bootstrap/Carousel";
 import "./Hero.css";
 import hero1 from "../../assets/Home-Banner.jpg";
 import hero2 from "../../assets/Home-Banner-2.jpg";
 
-interface SlideData {
-  id: number;
-  bgImage: string;
-}
-
-const sliderData: SlideData[] = [
-  { id: 1, bgImage: hero1 },
-  { id: 2, bgImage: hero2 },
-];
-
 const BridalHero: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % sliderData.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="slider-wrapper">
-      <div className="slider-container">
-        <div
-          className="slider-slide"
-          style={{
-            backgroundImage: `url(${sliderData[currentSlide].bgImage})`,
-          }}
-        />
+    <div className="hero-wrapper">
+      <Carousel
+        fade
+        interval={5000}
+        controls={false}
+        indicators={false}
+        pause={false}
+      >
+        <Carousel.Item>
+          <div
+            className="hero-slide"
+            style={{ backgroundImage: `url(${hero1})` }}
+          />
+        </Carousel.Item>
 
-        {/* Arrows */}
-        <button
-          className="slider-arrow slider-arrow-left"
-          onClick={() =>
-            setCurrentSlide(
-              (prev) => (prev - 1 + sliderData.length) % sliderData.length
-            )
-          }
-          aria-label="Previous slide"
-        >
-          &#10094;
-        </button>
-
-        <button
-          className="slider-arrow slider-arrow-right"
-          onClick={() =>
-            setCurrentSlide((prev) => (prev + 1) % sliderData.length)
-          }
-          aria-label="Next slide"
-        >
-          &#10095;
-        </button>
-      </div>
+        <Carousel.Item>
+          <div
+            className="hero-slide"
+            style={{ backgroundImage: `url(${hero2})` }}
+          />
+        </Carousel.Item>
+      </Carousel>
     </div>
   );
 };

@@ -1,9 +1,33 @@
-.slider-slide {
+.hero-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Desktop */
+.hero-slide {
   width: 100%;
   height: 100vh;
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
 }
+
+/* Tablet */
+@media (max-width: 992px) {
+  .hero-slide {
+    height: 75vh;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .hero-slide {
+    height: 60vh;
+    background-position: top;
+  }
+}
+
+
 nav a {
   color: #ffffff;
   text-decoration: none;
