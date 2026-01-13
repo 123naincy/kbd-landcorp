@@ -38,6 +38,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import {edenStreetFaqData } from "../data/Faq";
+import FAQ from '../components/Faq';
 
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -262,8 +264,6 @@ function App() {
           </div>
         </div>
       </section>
-
-
       {/* Key Highlights Section */}
       <section className="py-20 bg-gray-50" id="properties">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -539,8 +539,6 @@ function App() {
           </div>
         </div>
       </section>
-
-
       <section className="w-full py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -765,7 +763,10 @@ function App() {
           />
         </div>
       </section>
-
+{/* faq */}
+<FAQ
+   data={edenStreetFaqData}
+      />
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

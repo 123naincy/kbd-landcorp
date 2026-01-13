@@ -1,6 +1,8 @@
 import React, { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import PopupLeadForm from "../components/PopupLeadForm";
+import FAQ from "../components/Faq";
+import { kbdGroupFaqData } from "../data/Faq";
 
 
 // Lazy-load heavy sections to prevent big JS blocking the main thread
@@ -27,6 +29,7 @@ export default function Home() {
         <Properties />
         <AboutSection />
         <Agents />
+        <FAQ data={kbdGroupFaqData} />
         <ContactSection />
         <Footer />
         <RightSideContactWidget />
