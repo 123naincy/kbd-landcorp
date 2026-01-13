@@ -6,7 +6,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="py-20 px-4 bg-gradient-to-b from-white to-rose-50"
+      className="py-20 px-4 bg-gradient-to-b from-white to-[#FFF6DA]"
     >
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
@@ -14,7 +14,10 @@ export default function AboutSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Where Dreams Meet Reality
           </h2>
-          <div className="w-24 h-1 bg-rose-400 mx-auto mb-6"></div>
+
+          {/* Gold Divider */}
+          <div className="w-24 h-1 bg-gradient-to-r from-[#B8962E] to-[#F5E6B3] mx-auto mb-6"></div>
+
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             A landmark bridal shopping destination on the prestigious
             Chandigarh-Manali Highway, designed to create the perfect retail
@@ -24,44 +27,43 @@ export default function AboutSection() {
 
         {/* Cards */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mb-6">
-              <Sparkles className="w-8 h-8 text-rose-500" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Premium Location
-            </h3>
-            <p className="text-gray-600">
-              1 acre frontage on the National Highway with exceptional visibility
-              and connectivity to major cities across North India.
-            </p>
-          </div>
+          {[
+            {
+              icon: Sparkles,
+              title: "Premium Location",
+              desc:
+                "1 acre frontage on the National Highway with exceptional visibility and connectivity to major cities across North India.",
+            },
+            {
+              icon: MapPin,
+              title: "Strategic Hub",
+              desc:
+                "Positioned on one of India's most scenic routes, attracting destination wedding shoppers and tourists throughout the year.",
+            },
+            {
+              icon: TrendingUp,
+              title: "High ROI Potential",
+              desc:
+                "Tap into the thriving bridal industry with a property designed for maximum footfall and business success.",
+            },
+          ].map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={index}
+                className="bg-gradient-to-br from-[#FFF6DA] to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-[#D4AF37] to-[#B8962E] rounded-full flex items-center justify-center mb-6">
+                  <Icon className="w-8 h-8 text-white" />
+                </div>
 
-          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mb-6">
-              <MapPin className="w-8 h-8 text-rose-500" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Strategic Hub
-            </h3>
-            <p className="text-gray-600">
-              Positioned on one of India's most scenic routes, attracting
-              destination wedding shoppers and tourists throughout the year.
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mb-6">
-              <TrendingUp className="w-8 h-8 text-rose-500" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              High ROI Potential
-            </h3>
-            <p className="text-gray-600">
-              Tap into the thriving bridal industry with a property designed for
-              maximum footfall and business success.
-            </p>
-          </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600">{item.desc}</p>
+              </div>
+            );
+          })}
         </div>
 
         {/* Content + Image */}
@@ -96,7 +98,7 @@ export default function AboutSection() {
               <img
                 src={About_Image}
                 alt="Luxury Bridal Shopping"
-                className="w-full h-5rem object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
@@ -109,7 +111,9 @@ export default function AboutSection() {
 /* Reusable Stat Component */
 const Stat = ({ value, label }: { value: string; label: string }) => (
   <div>
-    <div className="text-4xl font-bold text-rose-500 mb-2">{value}</div>
+    <div className="text-4xl font-bold text-[#D4AF37] mb-2">
+      {value}
+    </div>
     <div className="text-gray-600">{label}</div>
   </div>
 );
