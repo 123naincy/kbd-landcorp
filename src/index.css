@@ -118,3 +118,16 @@ a{
 .accordion-button::after{
   display: none;
 }
+/* breadcrumb css */
+.breadcrumb-item a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  color: #fff;
+}
+
+.breadcrumb-item.active {
+  color: #fff;
+}

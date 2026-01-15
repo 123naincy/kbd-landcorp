@@ -14,7 +14,7 @@ export default function Agents() {
         {/* Section Heading */}
         <Reveal className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-[#293066] mb-4">
-            Meet Our Expert 
+            Meet Our Expert
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Work with experienced professionals dedicated to finding your perfect property.
@@ -43,14 +43,14 @@ export default function Agents() {
               >
                 {/* Agent Image */}
                 <div className="flex justify-center mb-6">
-  <div className="relative w-36 h-36 rounded-full overflow-hidden border-4 border-[#D2B563] shadow-lg bg-gray-100">
-    <img
-      src={agent.image}
-      alt={agent.name}
-      className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110"
-    />
-  </div>
-</div>
+                  <div className="relative w-36 h-36 rounded-full overflow-hidden border-4 border-[#D2B563] shadow-lg bg-gray-100">
+                    <img
+                      src={agent.image}
+                      alt={agent.name}
+                      className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110"
+                    />
+                  </div>
+                </div>
 
 
                 {/* Agent Info */}

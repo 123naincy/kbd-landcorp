@@ -36,11 +36,10 @@ export default function Properties() {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${
-                filter === f
+              className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${filter === f
                   ? "bg-[#293066] text-white"
                   : "bg-white text-[#293066] hover:bg-[#D2B563] hover:text-[#293066]"
-              }`}
+                }`}
             >
               {f === "all"
                 ? "All Properties"

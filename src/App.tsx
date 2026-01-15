@@ -30,7 +30,6 @@ export default function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/Terms-and-condition" element={<TermsAndConditions />} />
         </Route>
-
         {/* Page WITHOUT Navbar */}
         <Route path="/eden-street" element={<Eden />} />
 

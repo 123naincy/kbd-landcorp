@@ -33,10 +33,9 @@ export const images = {
   heenaWaliya,
 };
 
-// ✅ Optionally, also export them individually (for direct imports)
 export {
   eden,
-   eden_two,
+  eden_two,
   panipat,
   swarnav,
   sindhudurg,
@@ -49,5 +48,5 @@ export {
   kashishKholiwal,
   heenaWaliya,
   sindhdurg_two,
-  swanrav_two 
+  swanrav_two
 };

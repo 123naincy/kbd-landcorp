@@ -9,8 +9,8 @@ export default function RightSideContactWidget({
 }) {
   const whatsappHref = phone
     ? `https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
-        whatsappMessage
-      )}`
+      whatsappMessage
+    )}`
     : '#';
   const telHref = phone ? `tel:${phone.replace(/[^+0-9]/g, '')}` : '#';
   const mailHref = email ? `mailto:${email}` : '#';

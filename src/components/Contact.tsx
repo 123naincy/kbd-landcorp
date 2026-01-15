@@ -72,8 +72,8 @@ export default function Contact() {
                   <h3 className="text-xl font-semibold text-[#293066] mb-2">Visit Us</h3>
                   <p className="text-gray-600">
                     Chandigarh-Manali Highway,
-<br />
-                  Mohali, Punjab, 140301
+                    <br />
+                    Mohali, Punjab, 140301
 
                   </p>
                 </div>
