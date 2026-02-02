@@ -23,11 +23,10 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
-      ${
-        isTransparentPage && !isScrolled
+      ${isTransparentPage && !isScrolled
           ? "bg-transparent py-6"
           : "bg-gradient-to-r from-[#1F265A] via-[#252C66] to-[#1F265A] shadow-lg py-4"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-4 flex items-center">
         {/* LOGO (LEFT) */}

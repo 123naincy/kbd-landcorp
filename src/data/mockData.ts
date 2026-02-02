@@ -120,14 +120,6 @@ export const mockAgents = [
     bio: 'Amit Lohiya is a highly motivated Sales Manager who brings strategic thinking and a results-oriented approach to client relations, ensuring seamless and transparent property transactions.',
   },
   {
-    id: '5',
-    name: 'Taniya Preet Kaur',
-    role: 'Sales Manager',
-    email: 'taniyapreetkbd@gmail.com',
-    image: tanya,
-    bio: 'As Sales Manager, Tanya Preet Kaur leads with integrity and passion. She specializes in residential sales, offering clients tailored property solutions through clear communication and trust.',
-  },
-  {
     id: '6',
     name: 'Kashish Kholiwal',
     role: 'Sales Executive',

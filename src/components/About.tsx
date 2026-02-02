@@ -1,6 +1,6 @@
 import { Award, Users, Home, TrendingUp, CheckCircle } from 'lucide-react';
 import Reveal from './animations/Reveal';
-import { eden_two,panipat, swanrav_two,  sindhdurg_two } from "../data/images";
+import { eden_two, panipat, swanrav_two, sindhdurg_two } from "../data/images";
 export default function About() {
   const stats = [
     { icon: Home, value: '30+', label: 'Years Experience' },
@@ -35,13 +35,13 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
           <Reveal>
             <h3 className="text-3xl font-bold text-[#293066] mb-6">
-             Delivering Unmatched Excellence in Construction
+              Delivering Unmatched Excellence in Construction
             </h3>
             <p className="text-lg text-gray-600 mb-6">
               For over three decades, KBD Group has been a symbol of trust, innovation, and quality in North India's real estate landscape. From luxurious residential towers to large-scale townships and commercial spaces, every project we undertake reflects our unwavering commitment to precision, aesthetics, and long-term value creation.
             </p>
             <p className="text-lg text-gray-600 mb-8">
-             Guided by integrity and customer-centric values, we blend cutting-edge design with superior craftsmanship to create spaces that inspire and endure. Whether it's for families, investors, or businesses, KBD Group continues to redefine excellence — building not just structures, but lasting relationships and legacies.
+              Guided by integrity and customer-centric values, we blend cutting-edge design with superior craftsmanship to create spaces that inspire and endure. Whether it's for families, investors, or businesses, KBD Group continues to redefine excellence — building not just structures, but lasting relationships and legacies.
             </p>
           </Reveal>
 
@@ -113,7 +113,7 @@ export default function About() {
               Our Mission
             </h3>
             <p className="text-gray-600 text-lg">
-             Our mission is to deliver exceptional real estate solutions that go beyond customer expectations, driven by innovation, quality, and integrity. We aim to create sustainable value for our customers, investors, and communities through thoughtful design and responsible development. Every project we undertake reflects our commitment to excellence, transparency, and long-term trust. By blending modern vision with ethical practices, we strive to shape spaces that enhance lifestyles and contribute positively to society.
+              Our mission is to deliver exceptional real estate solutions that go beyond customer expectations, driven by innovation, quality, and integrity. We aim to create sustainable value for our customers, investors, and communities through thoughtful design and responsible development. Every project we undertake reflects our commitment to excellence, transparency, and long-term trust. By blending modern vision with ethical practices, we strive to shape spaces that enhance lifestyles and contribute positively to society.
             </p>
           </div>
           <div className="bg-gray-50 p-8 rounded-lg">
@@ -122,7 +122,7 @@ export default function About() {
               Our Vision
             </h3>
             <p className="text-gray-600 text-lg">
-             Our vision is to become a trusted leader in the real estate industry by redefining how people experience living and investing. We aspire to create landmark developments that combine modern design, sustainability, and community well-being. Through continuous innovation and a customer-first approach, we aim to set new standards of excellence in every project we deliver. Our ultimate goal is to build a legacy of trust, transparency, and lasting value that inspires generations to come.
+              Our vision is to become a trusted leader in the real estate industry by redefining how people experience living and investing. We aspire to create landmark developments that combine modern design, sustainability, and community well-being. Through continuous innovation and a customer-first approach, we aim to set new standards of excellence in every project we deliver. Our ultimate goal is to build a legacy of trust, transparency, and lasting value that inspires generations to come.
             </p>
           </div>
         </div>
