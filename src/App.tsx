@@ -10,6 +10,8 @@ import Gallery from "./pages/Gallery";
 import BridalShoppingCommercial from "./pages/BridalShoppingCommercial";
 import "./index.css";
 import MainLayout from "./layouts/MainLayout";
+import BlogDetail from "./pages/BlogDetail";
+import BlogPage from "./pages/BlogPage";
 
 export default function App() {
   const location = useLocation();
@@ -27,6 +29,8 @@ export default function App() {
             path="/bridal-shopping-commercial"
             element={<BridalShoppingCommercial />}
           />
+          <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/Terms-and-condition" element={<TermsAndConditions />} />
         </Route>

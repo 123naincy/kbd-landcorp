@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // 👈 add this
+import { useNavigate } from "react-router-dom";
 import "./PopupLeadForm.css";
 
+import { submitToSheet } from "../components/utils/submitToSheet"; // ✅ Universal Sheet Function
+
 const PopupLeadForm = () => {
-  const [isOpen, setIsOpen] = useState(true); // show popup on refresh
+  const [isOpen, setIsOpen] = useState(true);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -14,9 +16,10 @@ const PopupLeadForm = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate(); // 👈 for /eden-street navigation
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  // ✅ Handle Change
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     setFormData((prev) => ({
@@ -25,25 +28,23 @@ const PopupLeadForm = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  // ✅ Handle Submit → Excel Sheet
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    const scriptURL =
-      "https://script.google.com/macros/s/AKfycbx1S9l2a3s_gbdPoEtLhF22dKUWYYO1DCmB9LCFahdBeNT7dADPRkHqWglZAsQ1llQ/exec"; // ✅ your Apps Script URL
-
-    const formDataToSend = new FormData();
-    formDataToSend.append("name", formData.name);
-    formDataToSend.append("email", formData.email);
-    formDataToSend.append("phone", formData.phone);
-    formDataToSend.append("type", formData.type); // 👈 also send property type
-
     try {
-      await fetch(scriptURL, { method: "POST", body: formDataToSend });
+      await submitToSheet({
+        formName: "Popup Lead Form",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        extra: formData.type, // ✅ Commercial/Residential saved in Extra
+      });
 
-      alert("✅ ThankYou. Emjoy the Projects Details");
+      alert("✅ Thank you! Enjoy the project details.");
 
-      // reset form
+      // ✅ Reset Form
       setFormData({
         name: "",
         email: "",
@@ -51,24 +52,26 @@ const PopupLeadForm = () => {
         type: "commercial",
       });
 
-      // optional: close popup
+      // ✅ Close Popup
       setIsOpen(false);
 
-      // 👇 navigate to /eden-street page
+      // ✅ Navigate
       navigate("/eden-street");
     } catch (error) {
-      console.error("Error!", error);
+      console.error("Submit Error:", error);
       alert("❌ Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
+  // ✅ If Popup Closed
   if (!isOpen) return null;
 
   return (
     <div className="lead-overlay">
       <div className="lead-modal">
+        {/* Close Button */}
         <button
           className="lead-close"
           onClick={() => setIsOpen(false)}
@@ -77,6 +80,7 @@ const PopupLeadForm = () => {
           ×
         </button>
 
+        {/* Header */}
         <div className="lead-header">
           <span className="lead-badge">Limited Time</span>
           <h2 className="lead-title">Get Project Details & Pricing</h2>
@@ -86,7 +90,9 @@ const PopupLeadForm = () => {
           </p>
         </div>
 
+        {/* ✅ Form */}
         <form className="lead-form" onSubmit={handleSubmit}>
+          {/* Name */}
           <div className="lead-field">
             <label>Name</label>
             <input
@@ -99,6 +105,7 @@ const PopupLeadForm = () => {
             />
           </div>
 
+          {/* Phone */}
           <div className="lead-field">
             <label>Phone Number</label>
             <input
@@ -111,6 +118,7 @@ const PopupLeadForm = () => {
             />
           </div>
 
+          {/* Email */}
           <div className="lead-field">
             <label>Email</label>
             <input
@@ -123,8 +131,10 @@ const PopupLeadForm = () => {
             />
           </div>
 
+          {/* Property Type */}
           <div className="lead-field">
             <label>Property Type</label>
+
             <div className="lead-radio-group">
               <label
                 className={
@@ -160,14 +170,12 @@ const PopupLeadForm = () => {
             </div>
           </div>
 
-          <button
-            type="submit"
-            className="lead-submit"
-            disabled={loading}
-          >
-            {loading ? "Submitting..." : "Get Details Now"}
+          {/* Submit Button */}
+          <button type="submit" className="lead-submit" disabled={loading}>
+            {loading ? "Submitting..." : "Get Details Now ✅"}
           </button>
 
+          {/* Footer Note */}
           <p className="lead-note">
             🔒 We respect your privacy. Your details are safe with us.
           </p>
