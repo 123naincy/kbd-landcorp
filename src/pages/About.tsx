@@ -11,7 +11,6 @@ export default function AboutPage() {
     <>
      <Helmet>
         <title>About KBD Landcorp | Trusted Real Estate Experts in North India </title>
-
         <meta
           name="description"
           content="KBD Landcorp builds modern residential and commercial properties in Mohali and Kharar. Explore premium real estate projects with long-term investment potential."
