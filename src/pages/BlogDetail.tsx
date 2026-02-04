@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { blogs } from "../data/blogs";
 import ReactMarkdown from "react-markdown";
 import { useState } from "react";
-
+import { submitToSheet } from "../components/utils/submitToSheet";
 export default function BlogDetail() {
   const { id } = useParams<{ id: string }>();
   const blog = blogs.find((b) => b.id === Number(id));
@@ -12,6 +12,33 @@ export default function BlogDetail() {
     phone: "",
     email: "",
   });
+const [loading , setLoading] = useState(false);
+const handleSubmit = async (e : React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+ try {
+      await submitToSheet({
+        formName: "Free Consultation Sidebar Form",
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+      });
+
+      alert("✅ Request Submitted! Our team will call you back soon.");
+
+      // ✅ Reset Form
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+      });
+    } catch (error) {
+      console.log(error);
+      alert("❌ Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (!blog) {
     return <h2 className="text-center mt-10">Blog Not Found ❌</h2>;
@@ -31,7 +58,7 @@ export default function BlogDetail() {
 
       {/* Main Layout */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 px-6 -mt-28 relative z-10">
-        
+
         {/* ✅ Blog Content Section */}
         <div className="lg:col-span-2 bg-white rounded-3xl shadow-xl p-10">
           {/* Date */}
@@ -56,8 +83,11 @@ export default function BlogDetail() {
           </div>
 
           {/* Blog Markdown */}
-          <div className="prose prose-lg max-w-none mt-8 prose-img:rounded-xl prose-img:shadow-lg">
-            <ReactMarkdown>{blog.content}</ReactMarkdown>
+          <div className="prose prose-lg max-w-none mt-4 prose-img:rounded-xl prose-img:shadow-lg">
+            <ReactMarkdown components={{
+              img: ({ node, ...props }) => <img {...props} className="w-full h-[250px] object-cover rounded-xl shadow-lg"
+              />
+            }}>{blog.content}</ReactMarkdown>
           </div>
 
           {/* CTA Box */}
@@ -81,45 +111,49 @@ export default function BlogDetail() {
             Fill details & our team will call you back.
           </p>
 
-          {/* Form */}
-          <form className="mt-6 space-y-4">
-            <input
-              type="text"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
-              className="w-full p-3 border rounded-lg outline-none focus:border-[#FCAF2E]"
-            />
+         {/* ✅ Form */}
+      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+        <input
+          type="text"
+          required
+          placeholder="Your Name"
+          value={formData.name}
+          onChange={(e) =>
+            setFormData({ ...formData, name: e.target.value })
+          }
+          className="w-full p-3 border rounded-lg outline-none focus:border-[#FCAF2E]"
+        />
 
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              value={formData.phone}
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
-              className="w-full p-3 border rounded-lg outline-none focus:border-[#FCAF2E]"
-            />
+        <input
+          type="tel"
+          required
+          placeholder="Phone Number"
+          value={formData.phone}
+          onChange={(e) =>
+            setFormData({ ...formData, phone: e.target.value })
+          }
+          className="w-full p-3 border rounded-lg outline-none focus:border-[#FCAF2E]"
+        />
 
-            <input
-              type="email"
-              placeholder="Email Address"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-              className="w-full p-3 border rounded-lg outline-none focus:border-[#FCAF2E]"
-            />
+        <input
+          type="email"
+          required
+          placeholder="Email Address"
+          value={formData.email}
+          onChange={(e) =>
+            setFormData({ ...formData, email: e.target.value })
+          }
+          className="w-full p-3 border rounded-lg outline-none focus:border-[#FCAF2E]"
+        />
 
-            <button
-              type="submit"
-              className="w-full bg-[#FCAF2E] text-black font-semibold py-3 rounded-lg hover:bg-black hover:text-white transition"
-            >
-              Request Callback →
-            </button>
-          </form>
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-[#FCAF2E] text-black font-semibold py-3 rounded-lg hover:bg-black hover:text-white transition disabled:opacity-60"
+        >
+          {loading ? "Submitting..." : "Request Callback →"}
+        </button>
+      </form>
 
           {/* Extra Info */}
           <p className="text-xs text-gray-400 mt-4 text-center">

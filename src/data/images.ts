@@ -15,11 +15,6 @@ import kashishKholiwal from "../assets/kashish.jpeg";
 import heenaWaliya from "../assets/heena.jpg";
 import sindhdurg_two from "../assets/sindhudurg-three.jpg";
 import swanrav_two from "../assets/swarnav-three.jpeg"
-// blogs images
-import BlogCard  from "../../src/assets/blogs/blog-first.jpg";
-import blogdetailfirst from "../assets/blogs/blog-detail.png";
-import blogdetailsecond from "../assets/blogs/blog-detail-first.png";
-import blogdetailthird from "../assets/blogs/mohali-kharar-card.jpg";
 // ✅ Export all images in a single object
 export const images = {
   eden,
@@ -50,8 +45,4 @@ export {
   heenaWaliya,
   sindhdurg_two,
   swanrav_two,
-  BlogCard,
-  blogdetailfirst,
-  blogdetailsecond,
-  blogdetailthird,
 };

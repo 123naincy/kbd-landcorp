@@ -1,8 +1,7 @@
-import BlogCard from "../assets/blogs/blog-first.jpg";
-
-import blogdetailfirst from "../assets/blogs/blog-detail.png";
-import blogdetailsecond from "../assets/blogs/blog-detail-first.png";
-import blogdetailthird from "../assets/blogs/mohali-kharar-card.jpg";
+import BlogCard from "../assets/blogs/mohali-kharar-blog-card.png";
+import blogdetailfirst from "../assets/blogs/mohali-kharar-detail-first.png";
+import blogdetailsecond from "../assets/blogs/mohali-kharar-detail-second.png";
+import blogdetailthird from "../assets/blogs/mohali-kharar-detail-third.png";
 
 export const blogs = [
   {
@@ -10,7 +9,6 @@ export const blogs = [
     title: "Why Mohali and Kharar Are Attracting Buyers and Investors in 2026",
     date: "Feb 3, 2026",
     image: BlogCard,
-
     content: `## North India Real Estate Scenario in 2026
 
 The residential real estate sector in 2026 is marked by stability and confidence. Buyers today are more informed and focused on value-driven investments rather than short-term speculation.
@@ -19,11 +17,7 @@ Demand remains strong in mid-segment and premium housing, especially in well-pla
 
 This shift has significantly benefited property markets surrounding Chandigarh, where Mohali and Kharar provide metro-level advantages at comparatively lower entry prices.
 
----
-
 ![North India Real Estate](${blogdetailfirst})
-
----
 
 ## Mohali Real Estate: Stability, Infrastructure, and Premium Living
 
@@ -31,19 +25,12 @@ Mohali has evolved into a self-sustained urban hub with a strong economic base. 
 
 Residential property prices in Mohali have continued to rise steadily in 2026, driven mainly by end-user demand. Unlike speculative markets, Mohali offers stability and predictable appreciation, making it attractive for long-term investors and families alike.
 
----
-
 ![Mohali Property Market](${blogdetailsecond})
-
----
-
 Infrastructure plays a critical role in Mohali’s success. Airport Road, PR-7, and other arterial routes ensure seamless connectivity to Chandigarh, Panchkula, and Kharar.
 
 Proximity to Chandigarh International Airport adds further appeal for professionals, business owners, and NRIs. Planned metro connectivity and ongoing civic upgrades are strengthening Mohali’s position as a premium residential destination.
 
 Key sectors such as Aerocity, IT City, and Sectors 78–85 remain strong residential zones, while Sectors 97–99 are gaining attention as future growth corridors.
-
----
 
 ## Kharar Real Estate: Affordable Entry with High Growth Potential
 
@@ -59,11 +46,7 @@ Kharar also enjoys a strong rental market, supported by professionals, students,
 
 Lower acquisition costs and stable rental yields make it attractive for income-focused investors.
 
----
-
 ![Kharar City Growth](${blogdetailthird})
-
----
 
 ## Conclusion: A Strategic Real Estate Opportunity for the Future
 

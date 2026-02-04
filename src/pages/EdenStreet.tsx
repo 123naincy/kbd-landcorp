@@ -40,7 +40,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import {edenStreetFaqData } from "../data/Faq";
 import FAQ from '../components/Faq';
-
+import { Helmet } from "react-helmet-async";
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -143,6 +143,20 @@ function App() {
 
   ];
   return (
+    <>
+    <Helmet>
+        <title>KBD Eden Street | Premium Commercial Property in Kharar</title>
+        <meta
+          name="description"
+          content="Discover KBD Eden Street commercial showrooms on Kharar–Kurali Highway. A prime retail destination with strategic location and strong business potential."
+
+        />
+        <meta
+          name="keywords"
+          content="KBD Eden Street, commercial showrooms Kharar, retail property Mohali, Kharar real estate "
+        />
+
+      </Helmet>
     <div className="min-h-screen bg-white">
       {/* Daily Offers Banner */}
       <div className="bg-gradient-to-r from-[#FCAF2E] to-[#e89d1a] text-white py-3 px-4 relative overflow-hidden">
@@ -845,6 +859,7 @@ function App() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
 

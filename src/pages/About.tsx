@@ -3,35 +3,40 @@ import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet-async";
 
-
 const About = lazy(() => import("../components/About"));
 
 export default function AboutPage() {
   return (
     <>
-     <Helmet>
+      <Helmet>
         <title>About KBD Landcorp | Trusted Real Estate Experts in North India </title>
         <meta
           name="description"
-          content="KBD Landcorp builds modern residential and commercial properties in Mohali and Kharar. Explore premium real estate projects with long-term investment potential."
+          content="Learn about KBD Landcorp, a trusted real estate developer delivering quality residential and commercial projects in Mohali, Kharar, and North India."
+
         />
+        <meta
+          name="keywords"
+          content="About real estate developer in India,Leading property developer in Gurgaon,Reputed builders in India,Premium real estate company profile India,Pan India developer with multi-city projects,about KBD Landcorp, real estate company in Mohali, developer in Kharar, property development "
+        />
+
       </Helmet>
-    <motion.div
-      id="about"
-      className="min-h-screen bg-gray-50"
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -12 }}
-      transition={{ duration: 0.4 }}
-    >
-      <div style={{ paddingTop: '80px' }}>
-        <Suspense fallback={<div style={{ padding: 24 }}>Loading…</div>}>
-         
-          <About />
-          <Footer />
-        </Suspense>
-      </div>
-    </motion.div>
+      <motion.div
+        id="about"
+        className="min-h-screen bg-gray-50"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -12 }}
+        transition={{ duration: 0.4 }}
+      >
+        <div style={{ paddingTop: '80px' }}>
+          <Suspense fallback={<div style={{ padding: 24 }}>Loading…</div>}>
+
+            <About />
+            <Footer />
+          </Suspense>
+        </div>
+      </motion.div>
     </>
   );
 }
