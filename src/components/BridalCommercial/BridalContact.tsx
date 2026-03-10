@@ -81,14 +81,14 @@ export default function BridalContact() {
                   {
                     icon: Phone,
                     title: "Phone",
-                    value: "+91 123 456 7890",
+                    value: "91-8383060833",
                     link: "tel:+911234567890",
                   },
                   {
                     icon: Mail,
                     title: "Email",
-                    value: "info@bridalsquare.com",
-                    link: "mailto:info@bridalsquare.com",
+                    value: "enquiry@kbdlandcorp.in",
+                    link: "mailto:enquiry@kbdlandcorp.in",
                   },
                 ].map((item, i) => {
                   const Icon = item.icon;

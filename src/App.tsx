@@ -32,7 +32,7 @@ export default function App() {
           <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/Terms-and-condition" element={<TermsAndConditions />} />
+          <Route path="/Terms-and-conditions" element={<TermsAndConditions />} />
         </Route>
         {/* Page WITHOUT Navbar */}
         <Route path="/eden-street" element={<Eden />} />

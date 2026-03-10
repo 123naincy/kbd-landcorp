@@ -105,7 +105,7 @@ export default function Contact() {
                     href="tel:+918448220334"
                     className="text-gray-600 hover:text-[#D2B563] transition-colors"
                   >
-                    +91 8448220334
+                    91-8383060833
                   </a>
                 </div>
               </div>
@@ -192,7 +192,7 @@ export default function Contact() {
                       setFormData({ ...formData, phone: e.target.value })
                     }
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#D2B563] focus:ring-2 focus:ring-[#D2B563] outline-none transition-all"
-                    placeholder="+91 8448220334"
+                    placeholder="91-8383060833"
                   />
                 </div>
 

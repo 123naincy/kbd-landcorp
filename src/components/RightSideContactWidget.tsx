@@ -2,43 +2,43 @@ import React from 'react';
 import { Phone, Mail, MessageSquare } from 'lucide-react';
 
 export default function RightSideContactWidget({
-  phone = '',
-  email = '',
-  whatsappMessage = 'Hi!',
-  className = '',
+ email = "enquiry@kbdlandcorp.in", // Change if needed
+  whatsappMessage = "Hi! I am interested in your project.",
+  className = "",
 }) {
-  const whatsappHref = phone
-    ? `https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
-      whatsappMessage
-    )}`
-    : '#';
-  const telHref = phone ? `tel:${phone.replace(/[^+0-9]/g, '')}` : '#';
-  const mailHref = email ? `mailto:${email}` : '#';
+  const phone = "91-8383060833";
+
+  const cleanPhone = phone.replace(/[^0-9]/g, ""); // For WhatsApp
+  const telPhone = phone.replace(/[^+0-9]/g, "");  // For Call
 
   const items = [
     {
-      id: 'whatsapp',
-      href: whatsappHref,
-      label: 'WhatsApp',
+      id: "whatsapp",
+      href: `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+        whatsappMessage
+      )}`,
+      label: "WhatsApp",
       Icon: MessageSquare,
-      bg: 'bg-green-500',
+      bg: "bg-green-500",
+      newTab: true,
     },
     {
-      id: 'call',
-      href: telHref,
-      label: 'Call',
+      id: "call",
+      href: `tel:${telPhone}`,
+      label: "Call",
       Icon: Phone,
-      bg: 'bg-blue-600',
+      bg: "bg-blue-600",
+      newTab: false,
     },
-    {
-      id: 'mail',
-      href: mailHref,
-      label: 'Mail',
+    email && {
+      id: "mail",
+      href: `mailto:${email}`,
+      label: "Mail",
       Icon: Mail,
-      bg: 'bg-red-500',
+      bg: "bg-red-500",
+      newTab: false,
     },
-  ];
-
+  ].filter(Boolean);
   return (
     <div
       className={`fixed left bottom-24 z-50 hidden sm:flex flex-col items-start gap-3 ${className}`}

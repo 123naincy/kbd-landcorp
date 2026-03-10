@@ -6,17 +6,38 @@ import { submitToSheet } from "../components/utils/submitToSheet";
 export default function BlogDetail() {
   const { id } = useParams<{ id: string }>();
   const blog = blogs.find((b) => b.id === Number(id));
+  const phoneNumber = "91-8383060833";
+  const callNumber = "+91-8383060833";
+  const emailAddress = "enquiry@kbdlandcorp.in";
+
+  const handleCall = () => {
+    window.location.href = `tel:${callNumber}`;
+  };
+
+  const handleEmail = () => {
+    const subject = "Project Inquiry";
+    const body = "Hi, I am interested in your project. Please share details.";
+    window.location.href = `mailto:${emailAddress}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+  };
+
+  const handleWhatsApp = () => {
+    const message = "Hi, I am interested in your project.";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
 
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
   });
-const [loading , setLoading] = useState(false);
-const handleSubmit = async (e : React.FormEvent) => {
-  e.preventDefault();
-  setLoading(true);
- try {
+  const [loading, setLoading] = useState(false);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
       await submitToSheet({
         formName: "Free Consultation Sidebar Form",
         name: formData.name,
@@ -71,14 +92,25 @@ const handleSubmit = async (e : React.FormEvent) => {
 
           {/* Share Buttons */}
           <div className="flex gap-3 mt-6">
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">
-              Share
+            <button
+              onClick={handleCall}
+              className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm"
+            >
+              Call
             </button>
-            <button className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm">
+
+            <button
+              onClick={handleEmail}
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm"
+            >
+              Email
+            </button>
+
+            <button
+              onClick={handleWhatsApp}
+              className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm"
+            >
               WhatsApp
-            </button>
-            <button className="px-4 py-2 bg-gray-900 text-white rounded-lg text-sm">
-              Copy Link
             </button>
           </div>
 
@@ -111,49 +143,49 @@ const handleSubmit = async (e : React.FormEvent) => {
             Fill details & our team will call you back.
           </p>
 
-         {/* ✅ Form */}
-      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-        <input
-          type="text"
-          required
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={(e) =>
-            setFormData({ ...formData, name: e.target.value })
-          }
-          className="w-full p-3 border rounded-lg outline-none focus:border-[#FCAF2E]"
-        />
+          {/* ✅ Form */}
+          <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            <input
+              type="text"
+              required
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
+              className="w-full p-3 border rounded-lg outline-none focus:border-[#FCAF2E]"
+            />
 
-        <input
-          type="tel"
-          required
-          placeholder="Phone Number"
-          value={formData.phone}
-          onChange={(e) =>
-            setFormData({ ...formData, phone: e.target.value })
-          }
-          className="w-full p-3 border rounded-lg outline-none focus:border-[#FCAF2E]"
-        />
+            <input
+              type="tel"
+              required
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={(e) =>
+                setFormData({ ...formData, phone: e.target.value })
+              }
+              className="w-full p-3 border rounded-lg outline-none focus:border-[#FCAF2E]"
+            />
 
-        <input
-          type="email"
-          required
-          placeholder="Email Address"
-          value={formData.email}
-          onChange={(e) =>
-            setFormData({ ...formData, email: e.target.value })
-          }
-          className="w-full p-3 border rounded-lg outline-none focus:border-[#FCAF2E]"
-        />
+            <input
+              type="email"
+              required
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              className="w-full p-3 border rounded-lg outline-none focus:border-[#FCAF2E]"
+            />
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-[#FCAF2E] text-black font-semibold py-3 rounded-lg hover:bg-black hover:text-white transition disabled:opacity-60"
-        >
-          {loading ? "Submitting..." : "Request Callback →"}
-        </button>
-      </form>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-[#FCAF2E] text-black font-semibold py-3 rounded-lg hover:bg-black hover:text-white transition disabled:opacity-60"
+            >
+              {loading ? "Submitting..." : "Request Callback →"}
+            </button>
+          </form>
 
           {/* Extra Info */}
           <p className="text-xs text-gray-400 mt-4 text-center">
