@@ -55,9 +55,11 @@ export default function Navbar() {
           >
             Bridal Shopping Commercial
           </Link>
-          <Link to="/blog" className="text-white no-underline hover:text-[#FCAF2E] transition">
-            Blogs
-          </Link>
+          <Link
+            to="/blog"
+            className="text-white no-underline hover:text-[#FCAF2E] transition"
+          > Blogs</Link>
+
           <Link to="/gallery" className="text-white no-underline hover:text-[#FCAF2E] transition">
             Gallery
           </Link>

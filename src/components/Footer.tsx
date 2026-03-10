@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Youtube, Twitter, Instagram, Linkedin } from 'lucide-react';
 import logo from "../assets/kbd-final-logo.jpg";
 import { Link } from "react-router-dom";
 import "./BridalCommercial/Hero.css";
@@ -26,10 +26,10 @@ export default function Footer() {
             </p>
 
             <div className="flex gap-4">
-              <a href="https://www.facebook.com/kbdlandcorp" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.youtube.com/@goboundry/featured" target="_blank" rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#D2B563] transition-all duration-300 group"
               >
-                <Facebook className="w-5 h-5 group-hover:text-[#293066]" />
+                <Youtube className="w-5 h-5 group-hover:text-[#293066]" />
               </a>
 
               <a href="https://twitter.com/kbdlandcorp" target="_blank" rel="noopener noreferrer"
@@ -38,13 +38,13 @@ export default function Footer() {
                 <Twitter className="w-5 h-5 group-hover:text-[#293066]" />
               </a>
 
-              <a href="https://www.instagram.com/kbdlandcorp_?igsh=ZWFyenE1bWVlNGN3" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.instagram.com/kbdgroup__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#D2B563] transition-all duration-300 group"
               >
                 <Instagram className="w-5 h-5 group-hover:text-[#293066]" />
               </a>
 
-              <a href="https://www.linkedin.com/in/kbdlandcorp" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.linkedin.com/company/brickhill-landbase/" target="_blank" rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#D2B563] transition-all duration-300 group"
               >
                 <Linkedin className="w-5 h-5 group-hover:text-[#293066]" />
@@ -125,7 +125,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="tel:+918448220334" className="hover:text-[#D2B563] transition-colors">
-                  +91 8448220334
+                  91-8383060833
                 </a>
               </li>
               <li>

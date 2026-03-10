@@ -6,13 +6,11 @@ import swarnav from "../assets/bridal-about.png";
 import sindhudurg from "../assets/Sindhudurg.jpg";
 // General / website assets
 import kbdwebsite from "../assets/right-banner.jpeg";
-
 // Team member images
 import deepakSir from "../assets/deepak-sir.jpeg";
 import vikramRaidu from "../assets/vikram-sir.jpeg";
 import amitKumar from "../assets/amit-kumar.jpeg";
 import amitLohiya from "../assets/amit.jpg"; // ✅ fixed duplicate file name
-import tanya from "../assets/tanya.jpeg";
 import kashishKholiwal from "../assets/kashish.jpeg";
 import heenaWaliya from "../assets/heena.jpg";
 import sindhdurg_two from "../assets/sindhudurg-three.jpg";
@@ -28,7 +26,6 @@ export const images = {
   vikramRaidu,
   amitKumar,
   amitLohiya,
-  tanya,
   kashishKholiwal,
   heenaWaliya,
 };
@@ -44,9 +41,8 @@ export {
   vikramRaidu,
   amitKumar,
   amitLohiya,
-  tanya,
   kashishKholiwal,
   heenaWaliya,
   sindhdurg_two,
-  swanrav_two
+  swanrav_two,
 };

@@ -2,7 +2,6 @@
 const TermsAndConditions = () => {
   return (
     <>
-
       <main className="pt-22 pb-16 px-4 bg-slate-50 min-h-screen">
         {/* Outer container to center the content */}
         <section className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-6 md:p-10 leading-relaxed">
@@ -167,10 +166,10 @@ const TermsAndConditions = () => {
               <br />
               📞 <strong>Phone:</strong>{" "}
               <a
-                href="tel:+918448220334"
+                href="tel:+918383060833"
                 className="text-[#1F265A] underline"
               >
-                8448220334
+                91-8383060833
               </a>
             </p>
           </section>
