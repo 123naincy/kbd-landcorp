@@ -1,187 +1,283 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./PopupLeadForm.css";
+import { submitToSheet } from "../components/utils/submitToSheet";
+import ReCAPTCHA from "react-google-recaptcha";
 
-import { submitToSheet } from "../components/utils/submitToSheet"; // ✅ Universal Sheet Function
+type FormDataType = {
+  name: string;
+  phone: string;
+  email: string;
+  type: string;
+};
 
-const PopupLeadForm = () => {
-  const [isOpen, setIsOpen] = useState(true);
+type ErrorType = {
+  name: string;
+  phone: string;
+  email: string;
+};
 
-  const [formData, setFormData] = useState({
+const PopupLeadForm: React.FC = () => {
+
+  const navigate = useNavigate();
+
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
+
+  const [formData, setFormData] = useState<FormDataType>({
     name: "",
     phone: "",
     email: "",
     type: "commercial",
   });
 
-  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<ErrorType>({
+    name: "",
+    phone: "",
+    email: "",
+  });
 
-  const navigate = useNavigate();
+  // Handle captcha
+  const handleCaptcha = (value: string | null) => {
+    setCaptchaValue(value);
+  };
 
-  // ✅ Handle Change
+  // Handle input change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
     const { name, value } = e.target;
+
+    if (name === "name" && !/^[A-Za-z\s]*$/.test(value)) return;
+
+    if (name === "phone" && !/^[0-9]*$/.test(value)) return;
+
+    if (name === "phone" && value.length > 10) return;
 
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
   };
 
-  // ✅ Handle Submit → Excel Sheet
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Validation
+  const validateForm = (): boolean => {
+
+    let valid = true;
+
+    const newErrors: ErrorType = {
+      name: "",
+      phone: "",
+      email: "",
+    };
+
+    const nameRegex = /^[A-Za-z\s]{3,}$/;
+
+    if (!nameRegex.test(formData.name)) {
+      newErrors.name = "Name must contain only letters";
+      valid = false;
+    }
+
+    const phoneRegex = /^[0-9]{10}$/;
+
+    if (!phoneRegex.test(formData.phone)) {
+      newErrors.phone = "Phone number must be 10 digits";
+      valid = false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Enter a valid email address";
+      valid = false;
+    }
+
+    if (!captchaValue) {
+      alert("Please verify that you are not a robot.");
+      valid = false;
+    }
+
+    setErrors(newErrors);
+
+    return valid;
+  };
+
+  // Submit form
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+
     e.preventDefault();
+
+    if (!validateForm()) return;
+
     setLoading(true);
 
     try {
+
       await submitToSheet({
-        formName: "Popup Lead Form",
+        formName: "Eden Street Lead Form",
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        extra: formData.type, // ✅ Commercial/Residential saved in Extra
+        extra: formData.type,
       });
 
-      alert("✅ Thank you! Enjoy the project details.");
+      alert("✅ Thank you! Our team will contact you shortly.");
 
-      // ✅ Reset Form
       setFormData({
         name: "",
-        email: "",
         phone: "",
+        email: "",
         type: "commercial",
       });
 
-      // ✅ Close Popup
       setIsOpen(false);
 
-      // ✅ Navigate
-      navigate("/eden-street");
+      navigate("/thank-you");
+
     } catch (error) {
-      console.error("Submit Error:", error);
-      alert("❌ Something went wrong. Please try again.");
+
+      console.error("Lead submit error:", error);
+      alert("Something went wrong. Please try again.");
+
     } finally {
+
       setLoading(false);
+
     }
   };
 
-  // ✅ If Popup Closed
   if (!isOpen) return null;
 
   return (
-    <div className="lead-overlay">
-      <div className="lead-modal">
-        {/* Close Button */}
-        <button
-          className="lead-close"
-          onClick={() => setIsOpen(false)}
-          aria-label="Close"
-        >
-          ×
-        </button>
 
-        {/* Header */}
-        <div className="lead-header">
-          <span className="lead-badge">Limited Time</span>
-          <h2 className="lead-title">Get Project Details & Pricing</h2>
-          <p className="lead-subtitle">
-            Share your details and we’ll send you the brochure, pricing, and
-            special launch offers.
-          </p>
-        </div>
+<div className="lead-overlay">
 
-        {/* ✅ Form */}
-        <form className="lead-form" onSubmit={handleSubmit}>
-          {/* Name */}
-          <div className="lead-field">
-            <label>Name</label>
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter your full name"
-              required
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </div>
+  <div className="lead-modal">
 
-          {/* Phone */}
-          <div className="lead-field">
-            <label>Phone Number</label>
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Enter your WhatsApp number"
-              required
-              value={formData.phone}
-              onChange={handleChange}
-            />
-          </div>
+    <button
+      className="lead-close"
+      onClick={() => setIsOpen(false)}
+    >
+      ✕
+    </button>
 
-          {/* Email */}
-          <div className="lead-field">
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              required
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
+    <div className="lead-header">
 
-          {/* Property Type */}
-          <div className="lead-field">
-            <label>Property Type</label>
+      <span className="lead-badge">
+        Premium Commercial Project
+      </span>
 
-            <div className="lead-radio-group">
-              <label
-                className={
-                  "lead-radio-pill" +
-                  (formData.type === "commercial" ? " active" : "")
-                }
-              >
-                <input
-                  type="radio"
-                  name="type"
-                  value="commercial"
-                  checked={formData.type === "commercial"}
-                  onChange={handleChange}
-                />
-                Commercial
-              </label>
+      <h2 className="lead-title">
+        Book Site Visit – Mohali
+      </h2>
 
-              <label
-                className={
-                  "lead-radio-pill" +
-                  (formData.type === "residential" ? " active" : "")
-                }
-              >
-                <input
-                  type="radio"
-                  name="type"
-                  value="residential"
-                  checked={formData.type === "residential"}
-                  onChange={handleChange}
-                />
-                Residential
-              </label>
-            </div>
-          </div>
+      <p className="lead-subtitle">
+        Register your interest for premium SCO plots in Mohali.
+        Our team will contact you shortly.
+      </p>
 
-          {/* Submit Button */}
-          <button type="submit" className="lead-submit" disabled={loading}>
-            {loading ? "Submitting..." : "Get Details Now ✅"}
-          </button>
-
-          {/* Footer Note */}
-          <p className="lead-note">
-            🔒 We respect your privacy. Your details are safe with us.
-          </p>
-        </form>
-      </div>
     </div>
+
+    <form
+      className="lead-form"
+      onSubmit={handleSubmit}
+    >
+
+      {/* Name */}
+
+      <div className="lead-field">
+
+        <label>Name</label>
+
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter your full name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+
+        {errors.name && (
+          <span className="error">{errors.name}</span>
+        )}
+
+      </div>
+
+      {/* Phone */}
+
+      <div className="lead-field">
+
+        <label>Phone Number</label>
+
+        <input
+          type="tel"
+          name="phone"
+          placeholder="Enter your phone number"
+          value={formData.phone}
+          onChange={handleChange}
+          maxLength={10}
+          inputMode="numeric"
+        />
+
+        {errors.phone && (
+          <span className="error">{errors.phone}</span>
+        )}
+
+      </div>
+
+      {/* Email */}
+
+      <div className="lead-field">
+
+        <label>Email Address</label>
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email address"
+          value={formData.email}
+          onChange={handleChange}
+        />
+
+        {errors.email && (
+          <span className="error">{errors.email}</span>
+        )}
+
+      </div>
+
+      {/* Google reCAPTCHA */}
+
+      <div style={{ marginBottom: "15px" }}>
+        <ReCAPTCHA
+          sitekey="6Lf8lYUsAAAAAMTXSi3VzVAYlPCBmvyMfPJT_AXt"
+          onChange={handleCaptcha}
+        />
+      </div>
+
+      {/* Submit Button */}
+
+      <button
+        type="submit"
+        className="lead-submit"
+        disabled={loading}
+      >
+        {loading ? "Submitting..." : "Book Site Visit"}
+      </button>
+
+      <p className="lead-note">
+        🔒 Your information is safe with us
+      </p>
+
+    </form>
+
+  </div>
+
+</div>
+
   );
 };
 

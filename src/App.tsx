@@ -12,6 +12,7 @@ import "./index.css";
 import MainLayout from "./layouts/MainLayout";
 import BlogDetail from "./pages/BlogDetail";
 import BlogPage from "./pages/BlogPage";
+import ThankYou from "./pages/ThankYou";
 
 export default function App() {
   const location = useLocation();
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/Terms-and-conditions" element={<TermsAndConditions />} />
         </Route>
+        <Route path="/thank-you" element={<ThankYou />} />
         {/* Page WITHOUT Navbar */}
         <Route path="/eden-street" element={<Eden />} />
 
